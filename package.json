@@ -1,0 +1,19 @@
+{
+  "name": "smartbot-ai",
+  "version": "1.0.0",
+  "private": true,
+  "description": "SmartBot AI full-stack customer support chatbot",
+  "workspaces": [
+    "backend",
+    "frontend"
+  ],
+  "scripts": {
+    "dev": "concurrently -n API,WEB -c green,cyan \"npm run dev -w backend\" \"npm run dev -w frontend\"",
+    "build": "npm run build -w frontend",
+    "start": "npm run start -w backend",
+    "lint": "npm run lint -w frontend"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}
