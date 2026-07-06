@@ -2,6 +2,7 @@
   "name": "smartbot-ai",
   "version": "1.0.0",
   "private": true,
+  "type": "module",
   "description": "SmartBot AI full-stack customer support chatbot",
   "workspaces": [
     "backend",

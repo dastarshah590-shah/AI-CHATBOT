@@ -4,6 +4,8 @@ build/
 .env
 .agents/
 .codex/
+.npm-cache/
+portfolio-screenshots/
 *.log
 {}
 .DS_Store
@@ -11,3 +13,6 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 coverage/
+
+.vercel
+.env*

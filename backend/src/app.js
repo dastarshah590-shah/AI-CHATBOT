@@ -9,6 +9,19 @@ import chatRoutes from "./routes/chatRoutes.js";
 import faqRoutes from "./routes/faqRoutes.js";
 import { errorMiddleware, notFoundMiddleware } from "./middleware/errorMiddleware.js";
 
+const isAllowedOrigin = (origin, allowedOrigins) => {
+  if (!origin || allowedOrigins.includes(origin)) {
+    return true;
+  }
+
+  try {
+    const { hostname } = new URL(origin);
+    return hostname === "localhost" || hostname === "127.0.0.1" || hostname.endsWith(".vercel.app");
+  } catch {
+    return false;
+  }
+};
+
 export const createApp = () => {
   const app = express();
   const allowedOrigins = (process.env.CLIENT_URL || "http://localhost:3000,http://localhost:5173")
@@ -18,7 +31,7 @@ export const createApp = () => {
   app.use(
     cors({
       origin(origin, callback) {
-        if (!origin || allowedOrigins.includes(origin)) {
+        if (isAllowedOrigin(origin, allowedOrigins)) {
           callback(null, true);
           return;
         }
