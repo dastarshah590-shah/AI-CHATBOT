@@ -12,21 +12,28 @@
   },
   "rewrites": [
     {
-      "source": "/api(/.*)?",
+      "source": "/",
+      "destination": {
+        "type": "service",
+        "service": "frontend"
+      }
+    },
+    {
+      "source": "/api/:path*",
       "destination": {
         "type": "service",
         "service": "backend"
       }
     },
     {
-      "source": "/socket.io(/.*)?",
+      "source": "/socket.io/:path*",
       "destination": {
         "type": "service",
         "service": "backend"
       }
     },
     {
-      "source": "/(.*)",
+      "source": "/:path*",
       "destination": {
         "type": "service",
         "service": "frontend"
